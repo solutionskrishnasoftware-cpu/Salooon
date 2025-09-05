@@ -1,272 +1,772 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Elegant Hairdressing Salon</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blush & Glow Beauty Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
-    body {
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      background-color: #f8f8f8;
-    }
+        body {
+            background-color: #fdf6f8;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 20px 0;
-      text-align: center;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-    header h1 {
-      font-size: 2.5em;
-      margin-bottom: 10px;
-    }
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.7s ease-out;
+        }
 
-    nav {
-      margin-top: 10px;
-    }
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
 
-    nav a {
-      color: #fff;
-      text-decoration: none;
-      margin: 0 15px;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    nav a:hover {
-      color: #ff6f61;
-    }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
 
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.1&auto=format&fit=crop&w=1600&q=80');
-      background-size: cover;
-      background-position: center;
-      height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-align: center;
-      padding: 20px;
-    }
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #d64d7e;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
 
-    .hero h2 {
-      font-size: 3em;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-    }
+        .logo i {
+            font-size: 2.5rem;
+            color: #d64d7e;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
 
-    .hero p {
-      font-size: 1.2em;
-      max-width: 600px;
-      margin: 0 auto;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
-    }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
 
-    section {
-      padding: 50px 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
 
-    section h2 {
-      text-align: center;
-      font-size: 2em;
-      margin-bottom: 30px;
-      color: #222;
-    }
+        nav ul li {
+            margin-left: 25px;
+        }
 
-    .services {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
+        nav ul li a {
+            text-decoration: none;
+            color: #8a3a5e;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
 
-    .service-card {
-      background: #fff;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      width: 300px;
-      overflow: hidden;
-      transition: transform 0.3s;
-    }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d64d7e;
+            transition: width 0.3s ease;
+        }
 
-    .service-card:hover {
-      transform: translateY(-5px);
-    }
+        nav ul li a:hover::after {
+            width: 100%;
+        }
 
-    .service-card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+        nav ul li a:hover {
+            color: #d64d7e;
+        }
 
-    .service-card h3 {
-      margin: 15px;
-      font-size: 1.5em;
-      color: #222;
-    }
+        .btn {
+            display: inline-block;
+            background: #d64d7e;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .service-card p {
-      margin: 0 15px 15px;
-      font-size: 1em;
-      color: #555;
-    }
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
 
-    .booking-section {
-      background-color: #fff;
-      padding: 50px 20px;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      max-width: 700px;
-      margin: 0 auto;
-    }
+        .btn:hover::before {
+            left: 100%;
+        }
 
-    .booking-section h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
+        .btn:hover {
+            background: #bf3c6c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(214, 77, 126, 0.3);
+        }
 
-    form {
-      display: flex;
-      flex-direction: column;
-    }
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 235, 240, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-    label {
-      margin-bottom: 5px;
-      font-weight: 600;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);
+            animation: shimmer 8s infinite linear;
+        }
 
-    input, select, textarea {
-      margin-bottom: 15px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      font-size: 1em;
-    }
+        @keyframes shimmer {
+            0% { transform: rotate(30deg) translateX(-100px) translateY(-100px); }
+            100% { transform: rotate(30deg) translateX(100px) translateY(100px); }
+        }
 
-    button {
-      padding: 12px;
-      background-color: #ff6f61;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      font-size: 1.1em;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-    button:hover {
-      background-color: #e65b50;
-    }
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #d64d7e;
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out;
+        }
 
-    footer {
-      background-color: #222;
-      color: #fff;
-      text-align: center;
-      padding: 20px 10px;
-      margin-top: 50px;
-    }
+        .hero p {
+            font-size: 1.2rem;
+            color: #8a3a5e;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
 
-    @media(max-width: 768px) {
-      .services {
-        flex-direction: column;
-        align-items: center;
-      }
+        .hero .btn {
+            animation: fadeInUp 1.4s ease-out;
+        }
 
-      .service-card {
-        width: 90%;
-      }
-    }
-  </style>
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #d64d7e;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #f8c8dc;
+            animation: expandLine 1s ease-out 0.5s forwards;
+            transform-origin: center;
+            transform: translateX(-50%) scaleX(0);
+        }
+
+        @keyframes expandLine {
+            to { transform: translateX(-50%) scaleX(1); }
+        }
+
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(214, 77, 126, 0.2);
+        }
+
+        .service-img {
+            height: 200px;
+            background-color: #f8c8dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-img i {
+            font-size: 4rem;
+            color: #d64d7e;
+            z-index: 2;
+            transition: all 0.5s;
+        }
+
+        .service-card:hover .service-img i {
+            transform: scale(1.2);
+            color: #bf3c6c;
+        }
+
+        .service-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #f8c8dc 0%, #ffd1dc 100%);
+            opacity: 0;
+            transition: all 0.5s;
+        }
+
+        .service-card:hover .service-img::after {
+            opacity: 0.8;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-content h3 {
+            color: #d64d7e;
+            margin-bottom: 15px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            color: #d64d7e;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Stylists Section */
+        .stylists {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .stylist-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stylist-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stylist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(214, 77, 126, 0.2);
+        }
+
+        .stylist-img {
+            height: 250px;
+            background-color: #f8c8dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stylist-img i {
+            font-size: 5rem;
+            color: #d64d7e;
+            transition: all 0.5s;
+        }
+
+        .stylist-card:hover .stylist-img i {
+            transform: scale(1.1);
+            color: #bf3c6c;
+        }
+
+        .stylist-content {
+            padding: 20px;
+        }
+
+        .stylist-content h3 {
+            color: #d64d7e;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stylist-content p {
+            color: #666;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s;
+        }
+
+        .booking.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            animation: bookingShine 6s infinite linear;
+        }
+
+        @keyframes bookingShine {
+            0% { transform: rotate(45deg) translateX(-100%) translateY(-100%); }
+            100% { transform: rotate(45deg) translateX(100%) translateY(100%); }
+        }
+
+        .booking h2 {
+            color: #d64d7e;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking p {
+            color: #8a3a5e;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: #d64d7e;
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+            transition: width 0.5s;
+        }
+
+        .footer-section:hover h3::after {
+            width: 80px;
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #f8c8dc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .socials a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .socials a:hover {
+            transform: translateY(-5px);
+            color: #ffd1dc;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-spa"></i>
+                    <h1>Blush & Glow</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="#">Services</a></li>
+                        <li><a href="#">Stylists</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </header>
 
-<header>
-  <h1>Elegant Hairdressing</h1>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#services">Services</a>
-    <a href="#booking">Booking</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Beauty & Wellness Salon</h2>
+                <p>Indulge in our luxurious beauty treatments designed to enhance your natural beauty and provide a relaxing experience.</p>
+                <a href="#" class="btn">Explore Our Services</a>
+            </div>
+        </div>
+    </section>
 
-<section class="hero" id="home">
-  <div>
-    <h2>Transform Your Look</h2>
-    <p>Professional hair styling, cuts, coloring & more. Book your appointment today!</p>
-  </div>
-</section>
+    <!-- Services Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Our Services</h2>
+        </div>
+        <div class="services">
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-cut"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Hair Styling</h3>
+                    <p>Professional haircuts, styling, and treatments tailored to your needs.</p>
+                    <p class="price">From $45</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-palette"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Makeup Artistry</h3>
+                    <p>Flawless makeup application for any occasion by our expert artists.</p>
+                    <p class="price">From $60</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-img">
+                    <i class="fas fa-hand-sparkles"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Manicure & Pedicure</h3>
+                    <p>Luxurious nail care services with a wide range of polish options.</p>
+                    <p class="price">From $35</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="services">
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1599534895036-6c61a3c7f4a4?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Haircut">
-      <h3>Haircut & Styling</h3>
-      <p>Fresh cuts and styles tailored to your personality and preferences.</p>
-    </div>
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Coloring">
-      <h3>Color & Highlights</h3>
-      <p>Creative coloring options to brighten your look or add dimension.</p>
-    </div>
-    <div class="service-card">
-      <img src="https://images.unsplash.com/photo-1549924231-f129b911e442?ixlib=rb-4.0.1&auto=format&fit=crop&w=800&q=80" alt="Keratin Treatment">
-      <h3>Hair Treatments</h3>
-      <p>Deep conditioning, keratin treatments, and more to nourish your hair.</p>
-    </div>
-  </div>
-</section>
+    <!-- Stylists Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Our Stylists</h2>
+        </div>
+        <div class="stylists">
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="stylist-content">
+                    <h3>Emma Wilson</h3>
+                    <p>Lead Hair Stylist with over 10 years of experience in trendy cuts and colors.</p>
+                </div>
+            </div>
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="stylist-content">
+                    <h3>Sophia Martinez</h3>
+                    <p>Makeup Artist specialized in bridal and special occasion makeup.</p>
+                </div>
+            </div>
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="stylist-content">
+                    <h3>Olivia Johnson</h3>
+                    <p>Nail technician known for intricate nail art and relaxing spa manicures.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<section id="booking" class="booking-section">
-  <h2>Book an Appointment</h2>
-  <form>
-    <label for="name">Full Name</label>
-    <input type="text" id="name" name="name" placeholder="Your full name" required />
+    <!-- Booking Section -->
+    <section class="container">
+        <div class="booking">
+            <h2>Book Your Appointment</h2>
+            <p>Ready to experience our services? Book your appointment today and our team will help you look and feel your best.</p>
+            <a href="#" class="btn">Schedule Now</a>
+        </div>
+    </section>
 
-    <label for="email">Email Address</label>
-    <input type="email" id="email" name="email" placeholder="you@example.com" required />
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Blush & Glow</h3>
+                    <p>Your premier destination for beauty and wellness services in a relaxing environment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Pink City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@blushandglow.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Blush & Glow Beauty Salon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <label for="service">Service</label>
-    <select id="service" name="service" required>
-      <option value="">Select a service</option>
-      <option value="haircut">Haircut & Styling</option>
-      <option value="coloring">Color & Highlights</option>
-      <option value="treatment">Hair Treatments</option>
-    </select>
+    <script>
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) * 1.1 &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
 
-    <label for="date">Preferred Date</label>
-    <input type="date" id="date" name="date" required />
+        // Function to add visible class to elements in viewport
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.section-title, .service-card, .stylist-card, .booking');
+            
+            elements.forEach(element => {
+                if (isInViewport(element)) {
+                    element.classList.add('visible');
+                }
+            });
+        }
 
-    <label for="time">Preferred Time</label>
-    <input type="time" id="time" name="time" required />
+        // Check visibility on load and scroll
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
 
-    <button type="submit">Book Now</button>
-  </form>
-</section>
-
-<section id="contact" style="padding:50px 20px; text-align:center;">
-  <h2>Contact Us</h2>
-  <p>123 Beauty Lane, Glamour City, Style State</p>
-  <p>Email: info@eleganthairdressing.com</p>
-  <p>Phone: (123) 456-7890</p>
-</section>
-
-<footer>
-  <p>&copy; 2024 Elegant Hairdressing. All rights reserved.</p>
-</footer>
-
+        // Initial check
+        document.addEventListener('DOMContentLoaded', function() {
+            checkVisibility();
+            
+            // Add animation delay to service cards for sequential animation
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.2}s`;
+            });
+            
+            // Add animation delay to stylist cards for sequential animation
+            const stylistCards = document.querySelectorAll('.stylist-card');
+            stylistCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
 </body>
 </html>
