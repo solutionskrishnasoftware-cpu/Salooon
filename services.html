@@ -47,6 +47,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -144,6 +145,30 @@
             background: #bf3c6c;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(214, 77, 126, 0.3);
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 25px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: #d64d7e;
+            border-radius: 5px;
+            transition: all 0.3s linear;
+            position: relative;
+            transform-origin: center;
         }
 
         /* Page Header */
@@ -602,17 +627,45 @@
 
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
+                flex-direction: row;
             }
             
             nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 70%;
+                flex-direction: column;
+                background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+                padding: 80px 30px 30px;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.3s ease;
+                z-index: 5;
+            }
+            
+            nav ul.active {
+                right: 0;
             }
             
             nav ul li {
-                margin: 10px;
+                margin: 15px 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(5px, 8px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(5px, -8px);
             }
             
             .page-header h2 {
@@ -646,17 +699,22 @@
                     <i class="fas fa-spa"></i>
                     <h1>Blush & Glow</h1>
                 </div>
+                <button class="menu-toggle" id="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <nav>
-                    <ul>
+                    <ul id="nav-menu">
                         <li><a href="index.html">Home</a></li>
                          <li><a href="about.html">About</a></li>
                         <li><a href="services.html" class="active">Services</a></li>
-                        <li><a href="#">Stylists</a></li>
+                        <li><a href="stylists.html">Stylists</a></li>
                     <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
-                <a href="booking.html" class="btn">Book Now</a>
+                <!-- <a href="booking.html" class="btn">Book Now</a> -->
             </div>
         </div>
     </header>
@@ -897,10 +955,31 @@
             });
         }
 
+        // Mobile menu toggle
+        function setupMobileMenu() {
+            const menuToggle = document.getElementById('menu-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            menuToggle.addEventListener('click', () => {
+                menuToggle.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+            
+            // Close menu when clicking on a link
+            const navLinks = document.querySelectorAll('#nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                });
+            });
+        }
+
         // Check visibility on load and scroll
         window.addEventListener('load', () => {
             checkVisibility();
             setupCategoryTabs();
+            setupMobileMenu();
         });
         window.addEventListener('scroll', checkVisibility);
 
