@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Stylists - Blush & Glow Beauty Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #fdf6f8;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            animation: slideDown 0.7s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #d64d7e;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #d64d7e;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #8a3a5e;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d64d7e;
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: #d64d7e;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d64d7e;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            background: #bf3c6c;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(214, 77, 126, 0.3);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 235, 240, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80') no-repeat center center/cover;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);
+            animation: shimmer 8s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% { transform: rotate(30deg) translateX(-100px) translateY(-100px); }
+            100% { transform: rotate(30deg) translateX(100px) translateY(100px); }
+        }
+
+        .page-header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .page-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: #d64d7e;
+            margin-bottom: 20px;
+            font-weight: 700;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #8a3a5e;
+            margin-bottom: 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Title */
+        .section-title {
+            text-align: center;
+            margin: 60px 0 40px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: #d64d7e;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: #f8c8dc;
+            animation: expandLine 1s ease-out 0.5s forwards;
+            transform-origin: center;
+            transform: translateX(-50%) scaleX(0);
+        }
+
+        @keyframes expandLine {
+            to { transform: translateX(-50%) scaleX(1); }
+        }
+
+        /* Stylists Grid */
+        .stylists-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .stylist-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .stylist-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stylist-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(214, 77, 126, 0.2);
+        }
+
+        .stylist-img {
+            height: 300px;
+            background-color: #f8c8dc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stylist-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s;
+        }
+
+        .stylist-card:hover .stylist-img img {
+            transform: scale(1.05);
+        }
+
+        .stylist-content {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .stylist-content h3 {
+            color: #d64d7e;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+        }
+
+        .stylist-role {
+            color: #bf3c6c;
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .stylist-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .stylist-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stylist-social a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #f8c8dc;
+            color: #d64d7e;
+            transition: all 0.3s;
+        }
+
+        .stylist-social a:hover {
+            background: #d64d7e;
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        /* Specialties Section */
+        .specialties {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 60px 0;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .specialties::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            animation: bookingShine 6s infinite linear;
+        }
+
+        @keyframes bookingShine {
+            0% { transform: rotate(45deg) translateX(-100%) translateY(-100%); }
+            100% { transform: rotate(45deg) translateX(100%) translateY(100%); }
+        }
+
+        .specialties-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .specialties-content h2 {
+            color: #d64d7e;
+            margin-bottom: 30px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .specialties-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            text-align: left;
+        }
+
+        .specialty-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .specialty-item h3 {
+            color: #d64d7e;
+            margin-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+            display: flex;
+            align-items: center;
+        }
+
+        .specialty-item h3 i {
+            margin-right: 10px;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 60px;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 1s;
+        }
+
+        .booking.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .booking::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            animation: bookingShine 6s infinite linear;
+        }
+
+        .booking h2 {
+            color: #d64d7e;
+            margin-bottom: 20px;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking p {
+            color: #8a3a5e;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .booking .btn {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: #d64d7e;
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+            background-size: 100% 100%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: white;
+            transition: width 0.5s;
+        }
+
+        .footer-section:hover h3::after {
+            width: 80px;
+        }
+
+        .footer-section p, .footer-section li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section a {
+            color: #f8c8dc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .socials a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .socials a:hover {
+            transform: translateY(-5px);
+            color: #ffd1dc;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 10px;
+            }
+            
+            .page-header h2 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-spa"></i>
+                    <h1>Blush & Glow</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="stylists.html">Stylists</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                <a href="#" class="btn">Book Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content">
+                <h2>Meet Our Talented Stylists</h2>
+                <p>Our team of experienced beauty professionals is dedicated to helping you look and feel your best.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stylists Section -->
+    <section class="container">
+        <div class="section-title">
+            <h2>Our Expert Team</h2>
+        </div>
+        <div class="stylists-grid">
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Emma Wilson">
+                </div>
+                <div class="stylist-content">
+                    <h3>Emma Wilson</h3>
+                    <span class="stylist-role">Lead Hair Stylist</span>
+                    <p>With over 10 years of experience, Emma specializes in precision cuts, balayage, and hair treatments. She continuously updates her skills with the latest techniques.</p>
+                    <div class="stylist-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b59b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Sophia Martinez">
+                </div>
+                <div class="stylist-content">
+                    <h3>Sophia Martinez</h3>
+                    <span class="stylist-role">Makeup Artist</span>
+                    <p>Sophia is renowned for her flawless bridal and special occasion makeup. Her attention to detail ensures each client looks radiant and feels confident.</p>
+                    <div class="stylist-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="stylist-card">
+                <div class="stylist-img">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=776&q=80" alt="Olivia Johnson">
+                </div>
+                <div class="stylist-content">
+                    <h3>Olivia Johnson</h3>
+                    <span class="stylist-role">Nail Technician</span>
+                    <p>Olivia creates stunning nail art and provides relaxing spa manicures. She's known for her precision and creative designs that always impress.</p>
+                    <div class="stylist-social">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Specialties Section -->
+    <section class="container">
+        <div class="specialties">
+            <div class="specialties-content">
+                <h2>Our Specialties</h2>
+                <div class="specialties-list">
+                    <div class="specialty-item">
+                        <h3><i class="fas fa-cut"></i> Hair Coloring</h3>
+                        <p>From subtle highlights to bold fashion colors, our stylists are experts in all coloring techniques.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3><i class="fas fa-brush"></i> Bridal Makeup</h3>
+                        <p>Special occasion makeup that enhances your natural beauty and lasts throughout your event.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3><i class="fas fa-hand-sparkles"></i> Nail Art</h3>
+                        <p>Intricate designs and flawless application for nails that make a statement.</p>
+                    </div>
+                    <div class="specialty-item">
+                        <h3><i class="fas fa-spa"></i> Hair Treatments</h3>
+                        <p>Restorative treatments that repair damage and bring life back to your hair.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="container">
+        <div class="booking">
+            <h2>Book With Your Favorite Stylist</h2>
+            <p>Ready to experience our services? Book your appointment today and our team will help you look and feel your best.</p>
+            <a href="#" class="btn">Schedule Now</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Blush & Glow</h3>
+                    <p>Your premier destination for beauty and wellness services in a relaxing environment.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Pink City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@blushandglow.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="socials">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Blush & Glow Beauty Salon. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to check if element is in viewport
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.left >= 0 &&
+                rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) * 1.1 &&
+                rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+            );
+        }
+
+        // Function to add visible class to elements in viewport
+        function checkVisibility() {
+            const elements = document.querySelectorAll('.section-title, .stylist-card, .booking');
+            
+            elements.forEach(element => {
+                if (isInViewport(element)) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Check visibility on load and scroll
+        window.addEventListener('load', checkVisibility);
+        window.addEventListener('scroll', checkVisibility);
+
+        // Initial check
+        document.addEventListener('DOMContentLoaded', function() {
+            checkVisibility();
+            
+            // Add animation delay to stylist cards for sequential animation
+            const stylistCards = document.querySelectorAll('.stylist-card');
+            stylistCards.forEach((card, index) => {
+                card.style.transitionDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
+</body>
+</html>
