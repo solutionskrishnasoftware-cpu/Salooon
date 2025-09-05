@@ -75,16 +75,21 @@
             100% { transform: scale(1); }
         }
 
-        nav ul {
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+        }
+
+        .desktop-nav ul {
             display: flex;
             list-style: none;
         }
 
-        nav ul li {
+        .desktop-nav ul li {
             margin-left: 25px;
         }
 
-        nav ul li a {
+        .desktop-nav ul li a {
             text-decoration: none;
             color: #8a3a5e;
             font-weight: 500;
@@ -93,7 +98,7 @@
             position: relative;
         }
 
-        nav ul li a::after {
+        .desktop-nav ul li a::after {
             content: '';
             position: absolute;
             bottom: -5px;
@@ -104,12 +109,92 @@
             transition: width 0.3s ease;
         }
 
-        nav ul li a:hover::after {
+        .desktop-nav ul li a:hover::after {
             width: 100%;
         }
 
-        nav ul li a:hover {
+        .desktop-nav ul li a:hover {
             color: #d64d7e;
+        }
+
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+            color: #d64d7e;
+            z-index: 1000;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 100px 30px 30px;
+            transition: right 0.3s ease;
+            z-index: 999;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: #8a3a5e;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 10px 0;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: #d64d7e;
+        }
+
+        .close-nav {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: transparent;
+            border: none;
+            font-size: 1.5rem;
+            color: #d64d7e;
+            cursor: pointer;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 998;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
         .btn {
@@ -144,6 +229,12 @@
             background: #bf3c6c;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(214, 77, 126, 0.3);
+        }
+
+        .mobile-btn {
+            display: none;
+            margin-top: 20px;
+            text-align: center;
         }
 
         /* Page Header */
@@ -611,17 +702,23 @@
 
         @media (max-width: 768px) {
             .header-content {
-                flex-direction: column;
+                flex-direction: row;
             }
             
-            nav ul {
-                margin-top: 20px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .desktop-nav {
+                display: none;
             }
             
-            nav ul li {
-                margin: 10px;
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .mobile-btn {
+                display: block;
+            }
+            
+            .header-content .btn {
+                display: none;
             }
             
             .page-header h2 {
@@ -643,20 +740,46 @@
                     <i class="fas fa-spa"></i>
                     <h1>Blush & Glow</h1>
                 </div>
-                <nav>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
                     <ul>
                         <li><a href="index.html">Home</a></li>
-                       <li><a href="about.html" class="active">About</a></li>
+                        <li><a href="about.html" class="active">About</a></li>
                         <li><a href="services.html">Services</a></li>
-                          <li><a href="#">Stylists</a></li>
-                       
+                        <li><a href="#">Stylists</a></li>
                         <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </nav>
+                
                 <a href="booking.html" class="btn">Book Now</a>
+                
+                <!-- Mobile Navigation Toggle -->
+                <button class="mobile-nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
             </div>
         </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <button class="close-nav">
+                <i class="fas fa-times"></i>
+            </button>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="#">Stylists</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="booking.html" class="btn mobile-btn">Book Now</a>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="overlay"></div>
     </header>
 
     <!-- Page Header -->
@@ -817,6 +940,34 @@
     </footer>
 
     <script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const closeNav = document.querySelector('.close-nav');
+        const overlay = document.querySelector('.overlay');
+        
+        function openMobileNav() {
+            mobileNav.classList.add('active');
+            overlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeMobileNav() {
+            mobileNav.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+        
+        mobileNavToggle.addEventListener('click', openMobileNav);
+        closeNav.addEventListener('click', closeMobileNav);
+        overlay.addEventListener('click', closeMobileNav);
+        
+        // Close mobile nav when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', closeMobileNav);
+        });
+
         // Function to check if element is in viewport
         function isInViewport(element) {
             const rect = element.getBoundingClientRect();
