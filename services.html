@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Blush & Glow Beauty Salon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: #fdf6f8;
+            color: #333;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Enhanced Header Styles */
+        header {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 15px 0;
+            box-shadow: 0 2px 20px rgba(214, 77, 126, 0.15);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            box-shadow: 0 5px 20px rgba(214, 77, 126, 0.2);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #d64d7e;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo i {
+            font-size: 2.5rem;
+            color: #d64d7e;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        /* Enhanced Desktop Navigation */
+        .desktop-nav {
+            display: flex;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+
+        .desktop-nav ul li {
+            margin-left: 25px;
+            position: relative;
+        }
+
+        .desktop-nav ul li a {
+            text-decoration: none;
+            color: #8a3a5e;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 8px 0;
+        }
+
+        .desktop-nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d64d7e;
+            transition: width 0.3s ease;
+        }
+
+        .desktop-nav ul li a:hover::after,
+        .desktop-nav ul li a.active::after {
+            width: 100%;
+        }
+
+        .desktop-nav ul li a:hover {
+            color: #d64d7e;
+        }
+
+        .desktop-nav ul li a.active {
+            color: #d64d7e;
+            font-weight: 600;
+        }
+
+        /* Enhanced Book Now Button */
+        .btn {
+            display: inline-block;
+            background: linear-gradient(45deg, #d64d7e, #bf3c6c);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(214, 77, 126, 0.3);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+            z-index: 1;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(214, 77, 126, 0.4);
+        }
+
+        /* Enhanced Mobile Navigation Toggle */
+        .mobile-nav-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1000;
+        }
+
+        .mobile-nav-toggle span {
+            display: block;
+            height: 3px;
+            width: 100%;
+            background-color: #d64d7e;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+        }
+
+        /* Hamburger animation when active */
+        .mobile-nav-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .mobile-nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .mobile-nav-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
+        /* Enhanced Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 400px;
+            height: 100vh;
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 100px 30px 30px;
+            transition: right 0.4s ease;
+            z-index: 999;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mobile-nav.active {
+            right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+        }
+
+        .mobile-nav ul li {
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateX(20px);
+            transition: all 0.4s ease;
+        }
+
+        .mobile-nav.active ul li {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .mobile-nav ul li:nth-child(1) { transition-delay: 0.1s; }
+        .mobile-nav ul li:nth-child(2) { transition-delay: 0.15s; }
+        .mobile-nav ul li:nth-child(3) { transition-delay: 0.2s; }
+        .mobile-nav ul li:nth-child(4) { transition-delay: 0.25s; }
+        .mobile-nav ul li:nth-child(5) { transition-delay: 0.3s; }
+        .mobile-nav ul li:nth-child(6) { transition-delay: 0.35s; }
+
+        .mobile-nav ul li a {
+            text-decoration: none;
+            color: #8a3a5e;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: block;
+            padding: 12px 0;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .mobile-nav ul li a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d64d7e;
+            transition: width 0.3s ease;
+        }
+
+        .mobile-nav ul li a:hover::before,
+        .mobile-nav ul li a.active::before {
+            width: 40px;
+        }
+
+        .mobile-nav ul li a:hover {
+            color: #d64d7e;
+        }
+
+        .mobile-nav ul li a.active {
+            color: #d64d7e;
+            font-weight: 600;
+        }
+
+        .mobile-btn {
+            margin-top: 30px;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease 0.4s;
+        }
+
+        .mobile-nav.active .mobile-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.4s;
+            z-index: 998;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(255, 209, 220, 0.8), rgba(248, 200, 220, 0.8)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><circle cx="50" cy="50" r="40" stroke="%23d64d7e" stroke-width="2" fill="none" /></svg>');
+            background-size: 200px;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% { background-position: 0 0; }
+            100% { background-position: 200px 200px; }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: #d64d7e;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #8a3a5e;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: #d64d7e;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #ffd1dc, #d64d7e, #ffd1dc);
+            border-radius: 3px;
+        }
+
+        .section-title p {
+            color: #8a3a5e;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(214, 77, 126, 0.1);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(214, 77, 126, 0.2);
+        }
+
+        .service-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover .service-img img {
+            transform: scale(1.1);
+        }
+
+        .service-content {
+            padding: 25px;
+        }
+
+        .service-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: #d64d7e;
+            margin-bottom: 15px;
+        }
+
+        .service-content p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .service-price {
+            font-size: 1.3rem;
+            color: #d64d7e;
+            font-weight: 600;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #f8c8dc;
+            color: #8a3a5e;
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .service-features li:last-child {
+            border-bottom: none;
+        }
+
+        .service-features li i {
+            color: #d64d7e;
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #ffd1dc 0%, #f8c8dc 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><path d="M30,30 Q50,10 70,30 T100,30" stroke="%23d64d7e" stroke-width="2" fill="none" /></svg>');
+            background-size: 200px;
+            animation: float 20s infinite linear;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(214, 77, 126, 0.1);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s ease;
+        }
+
+        .testimonial-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #666;
+            margin-bottom: 20px;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .testimonial-text::before,
+        .testimonial-text::after {
+            content: '"';
+            font-size: 3rem;
+            color: #ffd1dc;
+            position: absolute;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .testimonial-text::before {
+            top: -15px;
+            left: -10px;
+        }
+
+        .testimonial-text::after {
+            bottom: -30px;
+            right: -10px;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid #ffd1dc;
+        }
+
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #d64d7e;
+            margin-bottom: 5px;
+        }
+
+        .author-info p {
+            color: #8a3a5e;
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            text-align: center;
+            background: url('https://images.unsplash.com/photo-1595867818082-083862f3aaf4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1400&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            color: white;
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(214, 77, 126, 0.8);
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #8a3a5e 0%, #6b2c4a 100%);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ffd1dc;
+        }
+
+        .footer-column p,
+        .footer-column li {
+            margin-bottom: 10px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            padding: 5px 0;
+        }
+
+        .footer-column ul li i {
+            margin-right: 10px;
+            color: #ffd1dc;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: #ffd1dc;
+            color: #d64d7e;
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: row;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: flex;
+            }
+            
+            .mobile-btn {
+                display: block;
+            }
+            
+            .header-content .btn {
+                display: none;
+            }
+            
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .service-card, .testimonial-card {
+                margin-bottom: 20px;
+            }
+            
+            .cta h2 {
+                font-size: 2.2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .service-content h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-spa"></i>
+                    <h1>Blush & Glow</h1>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="desktop-nav">
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="services.html" class="active">Services</a></li>
+                        <li><a href="stylists.html">Stylists</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </nav>
+                
+                <a href="booking.html" class="btn">Book Now</a>
+                
+                <!-- Mobile Navigation Toggle with Hamburger -->
+                <button class="mobile-nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="stylists.html">Stylists</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="booking.html" class="btn mobile-btn">Book Now</a>
+        </div>
+        
+        <!-- Overlay -->
+        <div class="overlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Our Premium Services</h2>
+                <p>Indulge in our luxurious beauty treatments designed to enhance your natural beauty and leave you feeling radiant and refreshed.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Beauty Services</h2>
+                <p>Discover our range of premium beauty services tailored to your unique needs and preferences.</p>
+            </div>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Facial Treatments">
+                    </div>
+                    <div class="service-content">
+                        <h3>Facial Treatments</h3>
+                        <p>Rejuvenate your skin with our customized facial treatments designed for your specific skin type.</p>
+                        <span class="service-price">From $75</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Deep cleansing</li>
+                            <li><i class="fas fa-check"></i> Exfoliation</li>
+                            <li><i class="fas fa-check"></i> Hydrating mask</li>
+                            <li><i class="fas fa-check"></i> Facial massage</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Hair Styling">
+                    </div>
+                    <div class="service-content">
+                        <h3>Hair Styling</h3>
+                        <p>Transform your look with our professional hair styling services, from cuts to coloring.</p>
+                        <span class="service-price">From $60</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Precision haircut</li>
+                            <li><i class="fas fa-check"></i> Coloring & highlights</li>
+                            <li><i class="fas fa-check"></i> Blowout & styling</li>
+                            <li><i class="fas fa-check"></i> Treatment mask</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d7de?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Manicure & Pedicure">
+                    </div>
+                    <div class="service-content">
+                        <h3>Manicure & Pedicure</h3>
+                        <p>Pamper your hands and feet with our luxurious manicure and pedicure services.</p>
+                        <span class="service-price">From $45</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Nail shaping</li>
+                            <li><i class="fas fa-check"></i> Cuticle care</li>
+                            <li><i class="fas fa-check"></i> Exfoliating scrub</li>
+                            <li><i class="fas fa-check"></i> Moisturizing massage</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Makeup Artistry">
+                    </div>
+                    <div class="service-content">
+                        <h3>Makeup Artistry</h3>
+                        <p>Enhance your natural beauty with our professional makeup services for any occasion.</p>
+                        <span class="service-price">From $85</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Customized look</li>
+                            <li><i class="fas fa-check"></i> Premium products</li>
+                            <li><i class="fas fa-check"></i> Long-lasting finish</li>
+                            <li><i class="fas fa-check"></i> Expert application</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1600948836101-f9ffda59d250?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Waxing Services">
+                    </div>
+                    <div class="service-content">
+                        <h3>Waxing Services</h3>
+                        <p>Achieve smooth, hair-free skin with our professional and gentle waxing treatments.</p>
+                        <span class="service-price">From $35</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Precision technique</li>
+                            <li><i class="fas fa-check"></i> Soothing aftercare</li>
+                            <li><i class="fas fa-check"></i> Minimal discomfort</li>
+                            <li><i class="fas fa-check"></i> Long-lasting results</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card">
+                    <div class="service-img">
+                        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Massage Therapy">
+                    </div>
+                    <div class="service-content">
+                        <h3>Massage Therapy</h3>
+                        <p>Relax and rejuvenate with our therapeutic massage treatments tailored to your needs.</p>
+                        <span class="service-price">From $90</span>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check"></i> Stress relief</li>
+                            <li><i class="fas fa-check"></i> Muscle relaxation</li>
+                            <li><i class="fas fa-check"></i> Improved circulation</li>
+                            <li><i class="fas fa-check"></i> Custom pressure</li>
+                        </ul>
+                        <a href="booking.html" class="btn">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Testimonials</h2>
+                <p>Hear what our clients have to say about their experiences at Blush & Glow.</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The facial treatment was incredible! My skin has never felt so refreshed and rejuvenated. The esthetician was very knowledgeable and attentive to my skin's needs.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Regular Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>I've been coming to Blush & Glow for my hair for over a year now, and I'm always impressed. They truly understand what works for my hair type and lifestyle.</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emily Rodriguez">
+                        </div>
+                        <div class="author-info">
+                            <h4>Emily Rodriguez</h4>
+                            <p>Loyal Customer</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        <p>The massage therapy session was exactly what I needed after a stressful week. The therapist was professional and the ambiance was so relaxing. I'll definitely be back!</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Jessica Williams">
+                        </div>
+                        <div class="author-info">
+                            <h4>Jessica Williams</h4>
+                            <p>First-time Visitor</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Experience the Blush & Glow Difference?</h2>
+                <p>Book your appointment today and let our experts help you look and feel your absolute best.</p>
+                <a href="booking.html" class="btn">Schedule Your Visit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Blush & Glow</h3>
+                    <p>We are committed to providing exceptional beauty services in a relaxing and luxurious environment.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li><a href="about.html"><i class="fas fa-angle-right"></i> About Us</a></li>
+                        <li><a href="services.html"><i class="fas fa-angle-right"></i> Services</a></li>
+                        <li><a href="stylists.html"><i class="fas fa-angle-right"></i> Our Stylists</a></li>
+                        <li><a href="contact.html"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Facial Treatments</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Hair Styling</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Manicure & Pedicure</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Makeup Artistry</a></li>
+                        <li><a href="#"><i class="fas fa-angle-right"></i> Massage Therapy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> 123 Beauty Street, Glamour City</li>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@blushandglow.com</li>
+                        <li><i class="fas fa-clock"></i> Mon-Sat: 9:00 AM - 8:00 PM</li>
+                        <li><i class="fas fa-clock"></i> Sunday: 10:00 AM - 5:00 PM</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Blush & Glow Beauty Salon. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Navigation Toggle
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const mobileNav = document.querySelector('.mobile-nav');
+        const overlay = document.querySelector('.overlay');
+        
+        function toggleMobileNav() {
+            const isOpen = mobileNav.classList.contains('active');
+            
+            if (isOpen) {
+                mobileNav.classList.remove('active');
+                overlay.classList.remove('active');
+                mobileNavToggle.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            } else {
+                mobileNav.classList.add('active');
+                overlay.classList.add('active');
+                mobileNavToggle.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        mobileNavToggle.addEventListener('click', toggleMobileNav);
+        overlay.addEventListener('click', toggleMobileNav);
+        
+        // Close mobile nav when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', toggleMobileNav);
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Animation on scroll for service cards and testimonials
+        function animateOnScroll() {
+            const serviceCards = document.querySelectorAll('.service-card');
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            
+            serviceCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('animate');
+                }
+            });
+            
+            testimonialCards.forEach(card => {
+                const cardPosition = card.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (cardPosition < screenPosition) {
+                    card.classList.add('animate');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+    </script>
+</body>
+</html>
